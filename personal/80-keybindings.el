@@ -1,5 +1,16 @@
-;; GLOBAL KEYBINDINGS
+(prelude-require-package 'mwim)
+(require 'mwim)
+
+;; GLOBAL KEYINDINGS
 (global-set-key (kbd "<f5>") 'evil-write-all)
+
+;; [C-a] Move to the beginning/end of code in the current line.
+;; unbind inc/dec number (defined in prelude-evil.el).
+(define-key evil-normal-state-map (kbd "C-A") nil)
+(define-key evil-normal-state-map (kbd "C-S-A") nil)
+(global-set-key (kbd "C-a") 'mwim)
+(define-key prelude-mode-map (kbd "C-a") 'mwim)
+(setq mwim-position-functions '(mwim-code-beginning mwim-code-end))
 
 ;; LEADER KEYBINDINGS INIT
 
@@ -28,7 +39,33 @@
 (evil-leader/set-key "v" 'er/expand-region)
 (setq expand-region-contract-fast-key "V")
 
-(evil-leader/set-key "/" 'helm-do-ag-project-root)
+;; add search capability to expand-region
+(defadvice er/prepare-for-more-expansions-internal
+    (around helm-ag/prepare-for-more-expansions-internal activate)
+  ad-do-it
+  (let ((new-msg (concat (car ad-return-value)
+                         ", / to search in project, "
+                         "f to search in files, "
+                         "b to search in opened buffers"))
+        (new-bindings (cdr ad-return-value)))
+    (cl-pushnew
+     '("/" (lambda ()
+             (call-interactively
+              'helm-projectile-ag)))
+     new-bindings)
+    (cl-pushnew
+     '("f" (lambda ()
+             (call-interactively
+              'helm-do-ag)))
+     new-bindings)
+    (cl-pushnew
+     '("b" (lambda ()
+             (call-interactively
+              'helm-do-ag-buffers)))
+     new-bindings)
+    (setq ad-return-value (cons new-msg new-bindings))))
+
+(evil-leader/set-key "/" 'helm-projectile-ag)
 
 (evil-leader/set-key "!" 'shell-command)
 (evil-leader/set-key "'" 'shell)

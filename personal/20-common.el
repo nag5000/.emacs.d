@@ -1,3 +1,6 @@
+(prelude-require-packages '(yasnippet iedit evil-iedit-state highlight-thing
+                                      window-purpose evil-goggles))
+
 ;; Yet another snippet library, which is awesome. Allows you to expand
 ;; commonly used code templates into your buffer. Use it everywhere!
 ;; see https://joaotavora.github.io/yasnippet/
@@ -13,9 +16,21 @@
 (require 'highlight-thing)
 ;; Don't highlight the thing at point itself. Default is nil.
 (setq highlight-thing-exclude-thing-under-point t)
-(setq highlight-thing-ignore-list '("false" "true" "null" "undefined"))
+(setq highlight-thing-ignore-list '("false" "true" "null" "undefined" "let" "const"))
 ;; Toggle auto highlighting in all programming mode buffers.
 (add-hook 'prog-mode-hook 'highlight-thing-mode)
 
 (require 'window-purpose)
 (purpose-mode)
+
+;; https://github.com/edkolev/evil-goggles
+(require 'evil-goggles)
+(evil-goggles-mode)
+
+;; Treat hyphen and underscore as word delimiters in Evil mode.
+;; https://github.com/emacs-evil/evil#underscore-_-is-not-a-word-character
+;; Other examples:
+;;   - (modify-syntax-entry ?- "w" js2-mode-syntax-table)
+;;   - (add-hook 'c-mode-common-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+(modify-syntax-entry ?_ "w")
+(modify-syntax-entry ?- "w")
