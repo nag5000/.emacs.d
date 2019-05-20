@@ -7,7 +7,7 @@
  '(js-indent-level 2)
  '(package-selected-packages
    (quote
-    (evil-goggles mwim ember-mode window-purpose sr-speedbar highlight-thing evil-iedit-state iedit evil-leader emmet-mode doom-modeline yasnippet twilight-bright-theme exec-path-from-shell zop-to-char zenburn-theme which-key volatile-highlights undo-tree super-save smartrep smartparens operate-on-number move-text magit projectile imenu-anywhere hl-todo guru-mode gitignore-mode gitconfig-mode git-timemachine gist flycheck expand-region epl editorconfig easy-kill diminish diff-hl discover-my-major crux browse-kill-ring beacon anzu ace-window)))
+    (evil-magit evil-goggles mwim ember-mode window-purpose sr-speedbar highlight-thing evil-iedit-state iedit evil-leader emmet-mode doom-modeline yasnippet twilight-bright-theme exec-path-from-shell zop-to-char zenburn-theme which-key volatile-highlights undo-tree super-save smartrep smartparens operate-on-number move-text magit projectile imenu-anywhere hl-todo guru-mode gitignore-mode gitconfig-mode git-timemachine gist flycheck expand-region epl editorconfig easy-kill diminish diff-hl discover-my-major crux browse-kill-ring beacon anzu ace-window)))
  '(web-mode-code-indent-offset 2)
  '(web-mode-css-indent-offset 2)
  '(web-mode-enable-auto-quoting nil)

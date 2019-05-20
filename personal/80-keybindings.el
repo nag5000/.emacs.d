@@ -12,6 +12,14 @@
 (define-key prelude-mode-map (kbd "C-a") 'mwim)
 (setq mwim-position-functions '(mwim-code-beginning mwim-code-end))
 
+;; EVIL + MAGIT
+;; optional: this is the evil state that evil-magit will use
+;; (setq evil-magit-state 'normal)
+;; optional: disable additional bindings for yanking text
+;; (setq evil-magit-use-y-for-yank nil)
+(prelude-require-package 'evil-magit)
+(require 'evil-magit)
+
 ;; LEADER KEYBINDINGS INIT
 
 (prelude-require-package 'evil-leader)
