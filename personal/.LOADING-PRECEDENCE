@@ -1,0 +1,12 @@
+http://prelude.emacsredux.com/en/latest/configuration/#personalizing
+
+All files you create under the `personal/` directory are yours for
+personalization. There is no single special personal config file -- any files
+you create in the `personal/` directory will be loaded in lexicographical order.
+
+The overall loading precedence is:
+
+1. personal/preload/*
+2. core/
+3. personal/prelude-modules.el (or deprecated prelude-modules.el)
+4. personal/*
