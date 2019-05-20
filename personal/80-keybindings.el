@@ -20,7 +20,9 @@
 ;; If you set evil-leader/in-all-states to non-nil (before loading evil-leader
 ;; or via customize) you can access the leader keymap still with
 ;; the non-normal-prefix + leader. non-normal-prefix is "C-" by default.
-(setq evil-leader/in-all-states t)
+;;
+;; https://github.com/cofi/evil-leader/issues/31
+;;;;(setq evil-leader/in-all-states t)
 
 (evil-leader/set-leader "<SPC>")
 (setq evil-leader/no-prefix-mode-rx '("magit-.*-mode"))
@@ -162,6 +164,10 @@
   "gs" 'magit-status
   "gd" 'magit-dispatch
 )
+
+;; ember-mode
+(require 'ember-mode)
+(evil-leader/set-key "e" 'ember-command-prefix)
 
 ;; Quit
 (evil-leader/set-key
