@@ -1,5 +1,5 @@
 (prelude-require-packages '(yasnippet iedit evil-iedit-state highlight-thing
-                                      window-purpose evil-goggles))
+                                      evil-goggles))
 
 ;; Yet another snippet library, which is awesome. Allows you to expand
 ;; commonly used code templates into your buffer. Use it everywhere!
@@ -19,9 +19,6 @@
 (setq highlight-thing-ignore-list '("false" "true" "null" "undefined" "let" "const"))
 ;; Toggle auto highlighting in all programming mode buffers.
 (add-hook 'prog-mode-hook 'highlight-thing-mode)
-
-(require 'window-purpose)
-(purpose-mode)
 
 ;; https://github.com/edkolev/evil-goggles
 (require 'evil-goggles)

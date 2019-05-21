@@ -78,7 +78,7 @@
 (evil-leader/set-key "/" 'helm-projectile-ag)
 
 (evil-leader/set-key "!" 'shell-command)
-(evil-leader/set-key "'" 'shell)
+(evil-leader/set-key "'" 'shell-pop)
 
 ;; AVY
 (evil-leader/set-key
@@ -109,7 +109,7 @@
   "fD" 'delete-current-buffer-file
   "fR" 'rename-current-buffer-file
   "fy" 'show-and-copy-buffer-filename
-  "ft" 'sr-speedbar-toggle
+  "ft" 'neotree-toggle
 )
 
 ;; BUFFER
@@ -153,7 +153,7 @@
 ;; PROJECTile
 (evil-leader/set-key
   "pf" 'projectile-find-file
-  "p'" 'projectile-run-shell
+  "p'" 'xx/projectile-shell-pop
   "p!" 'projectile-run-shell-command-in-root
 )
 

@@ -22,7 +22,7 @@
 
 ;; https://www.emacswiki.org/emacs/SrSpeedbar
 ;; https://www.emacswiki.org/emacs/SpeedBar
-;; [<SPC>ft] sr-speedbar-toggle
+;; <sr-speedbar-toggle>
 (require 'sr-speedbar)
 ;;(setq speedbar-use-images nil)
 (setq sr-speedbar-default-width 25)
