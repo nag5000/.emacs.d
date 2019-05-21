@@ -13,6 +13,9 @@
     ("\\`\\*helm.*?\\*\\'" :regexp t :align t :size 0.4)
     (magit-status-mode :select t :inhibit-window-quit t :same t)
     (magit-log-mode :select t :inhibit-window-quit t :same t)
+    ;; noselect to select commit message buffer instead
+    (magit-diff-mode :select nil :inhibit-window-quit t)
+    ("\\*evil-jumps\\*" :regexp t :popup t :align below :size 0.4)
 ))
 
 ;; from https://github.com/wasamasa/shackle#examples
@@ -33,4 +36,14 @@
 ;; place in the buffer list.
 (setq iflipb-permissive-flip-back t)
 
-(setq iflipb-ignore-buffers '("^[*]" "^magit:" "^magit-process:"))
+(setq iflipb-ignore-buffers '("^[*]" "^magit:" "^magit-"))
+
+
+;; evil-jump: kill buffer AND WINDOW TOO on <q> and <return> press.
+(define-key evil-list-view-mode-map (kbd "q") #'kill-buffer-and-window)
+(defun evil--show-jumps-select-action (jump)
+  (let ((position (string-to-number (elt jump 1)))
+        (file (car (elt jump 2))))
+    (kill-buffer-and-window)
+    (switch-to-buffer (find-file file))
+    (goto-char position)))
