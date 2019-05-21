@@ -1,5 +1,5 @@
 (prelude-require-packages '(yasnippet iedit evil-iedit-state highlight-thing
-                                      evil-goggles back-button))
+                                      evil-goggles))
 
 ;; Yet another snippet library, which is awesome. Allows you to expand
 ;; commonly used code templates into your buffer. Use it everywhere!
@@ -31,9 +31,3 @@
 ;;   - (add-hook 'c-mode-common-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 (modify-syntax-entry ?_ "w")
 (modify-syntax-entry ?- "w")
-
-;; https://github.com/rolandwalker/back-button
-;; Visual navigation through mark rings in Emacs.
-;; <back-button-local-backward>, <back-button-local-forward>, ...
-(require 'back-button)
-(back-button-mode 1)

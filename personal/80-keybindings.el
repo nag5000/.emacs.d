@@ -4,13 +4,21 @@
 ;; GLOBAL KEYINDINGS
 (global-set-key (kbd "<f5>") 'evil-write-all)
 
-;; [C-x left], [C-x right] is also available by default.
-;; https://github.com/rolandwalker/back-button#default-key-bindings
-(global-set-key (kbd "<f6>") 'back-button-local-backward)
-(global-set-key (kbd "<f7>") 'back-button-local-forward)
+;; <C-o>, <C-i> are also available by default.
+;; jump commands act only within the current buffer.
+(setq evil-jumps-cross-buffers nil)
+(global-set-key (kbd "<f6>") 'evil-jump-backward)
+(global-set-key (kbd "<f7>") 'evil-jump-forward)
+(global-set-key (kbd "<f8>") 'evil-show-jumps)
 
 (global-set-key (kbd "<f9>")  'iflipb-previous-buffer)
 (global-set-key (kbd "<f10>") 'iflipb-next-buffer)
+(global-set-key (kbd "C-x <left>") 'iflipb-previous-buffer)
+(global-set-key (kbd "C-x <right>") 'iflipb-next-buffer)
+(global-set-key (kbd "C-x <C-left>") 'iflipb-previous-buffer)
+(global-set-key (kbd "C-x <C-right>") 'iflipb-next-buffer)
+(global-set-key (kbd "C-<") 'iflipb-previous-buffer)
+(global-set-key (kbd "C->") 'iflipb-next-buffer)
 
 ;; [C-a] Move to the beginning/end of code in the current line.
 ;; unbind inc/dec number (defined in prelude-evil.el).
@@ -122,9 +130,19 @@
 
 ;; BUFFER
 (evil-leader/set-key
-  "TAB" 'evil-switch-to-windows-last-buffer
-  "bn" 'next-buffer
-  "bp" 'previous-buffer
+  "TAB" 'crux-switch-to-previous-buffer
+  "b1" (lambda () (interactive) (iflipb-select-buffer 0))
+  "b2" (lambda () (interactive) (iflipb-select-buffer 1))
+  "b3" (lambda () (interactive) (iflipb-select-buffer 2))
+  "b4" (lambda () (interactive) (iflipb-select-buffer 3))
+  "b5" (lambda () (interactive) (iflipb-select-buffer 4))
+  "b6" (lambda () (interactive) (iflipb-select-buffer 5))
+  "b7" (lambda () (interactive) (iflipb-select-buffer 6))
+  "b8" (lambda () (interactive) (iflipb-select-buffer 7))
+  "b9" (lambda () (interactive) (iflipb-select-buffer 8))
+  "b0" (lambda () (interactive) (iflipb-select-buffer 9))
+  "bn" 'iflipb-next-buffer
+  "bp" 'iflipb-previous-buffer
   "ba" 'helm-buffers-list
   "bb" 'helm-projectile-switch-to-buffer
   "bd" 'kill-this-buffer

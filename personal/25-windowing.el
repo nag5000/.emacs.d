@@ -32,3 +32,5 @@
 ;; act as if the current buffer was not visited; it will stay in its original
 ;; place in the buffer list.
 (setq iflipb-permissive-flip-back t)
+
+(setq iflipb-ignore-buffers '("^[*]" "^magit:" "^magit-process:"))
