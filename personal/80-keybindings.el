@@ -4,6 +4,14 @@
 ;; GLOBAL KEYINDINGS
 (global-set-key (kbd "<f5>") 'evil-write-all)
 
+;; [C-x left], [C-x right] is also available by default.
+;; https://github.com/rolandwalker/back-button#default-key-bindings
+(global-set-key (kbd "<f6>") 'back-button-local-backward)
+(global-set-key (kbd "<f7>") 'back-button-local-forward)
+
+(global-set-key (kbd "<f9>")  'iflipb-previous-buffer)
+(global-set-key (kbd "<f10>") 'iflipb-next-buffer)
+
 ;; [C-a] Move to the beginning/end of code in the current line.
 ;; unbind inc/dec number (defined in prelude-evil.el).
 (define-key evil-normal-state-map (kbd "C-A") nil)
