@@ -1,5 +1,5 @@
 (prelude-require-packages '(yasnippet iedit evil-iedit-state highlight-thing
-                                      evil-goggles))
+                                      evil-goggles evil-matchit eacl))
 
 ;; Yet another snippet library, which is awesome. Allows you to expand
 ;; commonly used code templates into your buffer. Use it everywhere!
@@ -31,3 +31,11 @@
 ;;   - (add-hook 'c-mode-common-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 (modify-syntax-entry ?_ "w")
 (modify-syntax-entry ?- "w")
+
+(require 'evil-matchit)
+(global-evil-matchit-mode 1)
+
+;; https://github.com/redguardtoo/eacl
+;; <eacl-complete-line>, <eacl-complete-multiline>
+;; Ivy is required for eacl.
+(require 'eacl)

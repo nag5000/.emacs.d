@@ -28,6 +28,10 @@
 (define-key prelude-mode-map (kbd "C-a") 'mwim)
 (setq mwim-position-functions '(mwim-code-beginning mwim-code-end))
 
+;; <C-n>, <C-m>, <C-/>
+(define-key evil-insert-state-map (kbd "C-m") 'eacl-complete-line)
+(define-key evil-insert-state-map (kbd "C-/") 'eacl-complete-multiline)
+
 ;; EVIL + MAGIT
 ;; optional: this is the evil state that evil-magit will use
 ;; (setq evil-magit-state 'normal)
@@ -117,7 +121,7 @@
 ;; FILE
 (evil-leader/set-key
   "fa" 'helm-do-ag
-  "ff" 'helm-find-files
+  "ff" 'projectile-find-file-in-directory
   "fr" 'helm-recentf
   "fj" 'dired-jump
   "fs" 'save-buffer
