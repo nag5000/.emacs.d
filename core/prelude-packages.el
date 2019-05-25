@@ -71,7 +71,7 @@
     git-timemachine
     gitconfig-mode
     gitignore-mode
-    guru-mode
+    ;;; guru-mode
     hl-todo
     imenu-anywhere
     projectile
@@ -80,7 +80,7 @@
     operate-on-number
     smartparens
     smartrep
-    super-save
+    ;;; super-save
     undo-tree
     volatile-highlights
     which-key

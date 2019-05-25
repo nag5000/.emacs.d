@@ -1,9 +1,9 @@
-(setq prelude-theme 'twilight-bright)
+(setq prelude-theme 'kaolin-light)
 
 ;; Set default font
 (set-face-attribute 'default nil
                     :family "Source Code Pro"
-                    :height 140
+                    :height 110
                     :weight 'normal
                     :width 'normal)
 

@@ -28,8 +28,8 @@
 (define-key prelude-mode-map (kbd "C-a") 'mwim)
 (setq mwim-position-functions '(mwim-code-beginning mwim-code-end))
 
-;; <C-n>, <C-m>, <C-/>
-(define-key evil-insert-state-map (kbd "C-m") 'eacl-complete-line)
+;; <C-n>, <C-.>, <C-/>
+(define-key evil-insert-state-map (kbd "C-.") 'eacl-complete-line)
 (define-key evil-insert-state-map (kbd "C-/") 'eacl-complete-multiline)
 
 ;; EVIL + MAGIT
