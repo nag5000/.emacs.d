@@ -26,11 +26,13 @@
 
 ;; Treat hyphen and underscore as word delimiters in Evil mode.
 ;; https://github.com/emacs-evil/evil#underscore-_-is-not-a-word-character
-;; Other examples:
+;; Examples:
 ;;   - (modify-syntax-entry ?- "w" js2-mode-syntax-table)
 ;;   - (add-hook 'c-mode-common-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-(modify-syntax-entry ?_ "w")
-(modify-syntax-entry ?- "w")
+(add-hook 'after-change-major-mode-hook #'(lambda ()
+                                            (modify-syntax-entry ?_ "w")
+                                            (modify-syntax-entry ?- "w")))
+
 
 (require 'evil-matchit)
 (global-evil-matchit-mode 1)

@@ -28,3 +28,7 @@
 (setq sr-speedbar-default-width 25)
 (setq sr-speedbar-right-side nil)
 (setq speedbar-initial-expansion-list-name "buffers")
+
+(prelude-require-package 'vi-tilde-fringe)
+(require 'vi-tilde-fringe)
+(global-vi-tilde-fringe-mode)

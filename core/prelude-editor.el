@@ -302,7 +302,7 @@ The body of the advice is in BODY."
                     ,@body))
                commands)))
 
-(advise-commands "indent" (yank yank-pop) after
+(advise-commands "indent" (yank yank-pop evil-paste-before evil-paste-after) after
   "If current mode is one of `prelude-yank-indent-modes',
 indent yanked text (with prefix arg don't indent)."
   (if (and (not (ad-get-arg 0))
