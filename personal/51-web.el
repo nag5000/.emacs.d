@@ -17,9 +17,9 @@
 (add-hook 'web-mode-hook 'emmet-mode)
 (setq emmet-indentation 2)
 
-(custom-set-variables
- '(web-mode-markup-indent-offset 2)
- '(web-mode-css-indent-offset 2)
- '(web-mode-code-indent-offset 2)
- '(web-mode-enable-auto-quoting nil)
- '(css-indent-offset 2))
+(setq
+  web-mode-markup-indent-offset 2
+  web-mode-css-indent-offset 2
+  web-mode-code-indent-offset 2
+  web-mode-enable-auto-quoting nil
+  css-indent-offset 2)

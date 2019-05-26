@@ -16,9 +16,9 @@
 (require 'highlight-thing)
 ;; Don't highlight the thing at point itself. Default is nil.
 (setq highlight-thing-exclude-thing-under-point t)
-(setq highlight-thing-ignore-list '("false" "true" "null" "undefined" "let" "const"))
-;; Toggle auto highlighting in all programming mode buffers.
-(add-hook 'prog-mode-hook 'highlight-thing-mode)
+(setq highlight-thing-ignore-list '("false" "true" "null" "undefined" "let"))
+;; NOTE: for JS mode there is lsp-mode with the same feature.
+(add-hook 'web-mode-hook 'highlight-thing-mode)
 
 ;; https://github.com/edkolev/evil-goggles
 (require 'evil-goggles)
@@ -41,3 +41,25 @@
 ;; <eacl-complete-line>, <eacl-complete-multiline>
 ;; Ivy is required for eacl.
 (require 'eacl)
+
+(setq
+  ;; https://github.com/syohex/emacs-helm-ag#customize
+  ;; Use .agignore file at project root if this variable is non nil.
+  ;; You can also use .ignore file at project root.
+  helm-ag-use-agignore t
+
+  ;; Default: "ag --nocolor --nogroup". --follow: Follow symlinks.
+  helm-ag-base-command "ag --nocolor --nogroup --follow"
+
+  web-mode-attr-indent-offset nil ;; indent by first attr
+  web-mode-markup-indent-offset 2
+  web-mode-css-indent-offset 2
+  web-mode-code-indent-offset 2
+  web-mode-sql-indent-offset 2
+
+  company-dabbrev-downcase nil)
+
+(add-to-list 'projectile-other-file-alist '("js" "hbs" "scss" "css"))
+(add-to-list 'projectile-other-file-alist '("hbs" "js" "scss" "css"))
+(add-to-list 'projectile-other-file-alist '("scss" "hbs" "js" "css"))
+(add-to-list 'projectile-other-file-alist '("css" "hbs" "js" "scss"))

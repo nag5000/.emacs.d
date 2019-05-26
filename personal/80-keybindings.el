@@ -28,9 +28,13 @@
 (define-key prelude-mode-map (kbd "C-a") 'mwim)
 (setq mwim-position-functions '(mwim-code-beginning mwim-code-end))
 
-;; <C-n>, <C-.>, <C-/>
+;; <C-n>, <C-.>, <C-/>, <C-c />
 (define-key evil-insert-state-map (kbd "C-.") 'eacl-complete-line)
 (define-key evil-insert-state-map (kbd "C-/") 'eacl-complete-multiline)
+(global-set-key (kbd "C-c /") 'company-files)  ; Force complete file names on "C-c /" key
+
+(define-key evil-normal-state-map (kbd "q") 'avy-goto-char-timer)
+(define-key evil-normal-state-map (kbd "Q") 'evil-record-macro)
 
 ;; EVIL + MAGIT
 ;; optional: this is the evil state that evil-magit will use
@@ -130,6 +134,7 @@
   "fR" 'rename-current-buffer-file
   "fy" 'show-and-copy-buffer-filename
   "ft" 'neotree-toggle
+  "fo" 'helm-projectile-find-other-file
 )
 
 ;; BUFFER

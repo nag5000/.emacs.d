@@ -1,4 +1,4 @@
-(setq prelude-theme 'kaolin-light)
+(setq prelude-theme 'doom-one)
 
 ;; Set default font
 (set-face-attribute 'default nil

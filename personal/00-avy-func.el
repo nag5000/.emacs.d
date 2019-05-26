@@ -35,7 +35,7 @@
 (defun avy-goto-dot ()
   "Jump to a dot."
   (interactive)
-  (avy-jump "."))
+  (avy-jump "\\."))
 
 ;; Jump to a "function".
 (defun avy-goto-function-def ()
