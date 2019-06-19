@@ -39,6 +39,11 @@
 (setq iflipb-ignore-buffers '("^[*]" "^magit:" "^magit-"))
 
 
+;; https://github.com/waymondo/frog-jump-buffer
+;; (prelude-require-package 'frog-jump-buffer)   --- MELPA submission is in progress (see ./00-vendor-frog-jump-buffer.el)
+;; (require 'frog-jump-buffer)
+
+
 ;; evil-jump: kill buffer AND WINDOW TOO on <q> and <return> press.
 (define-key evil-list-view-mode-map (kbd "q") #'kill-buffer-and-window)
 (defun evil--show-jumps-select-action (jump)

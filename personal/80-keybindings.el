@@ -36,6 +36,8 @@
 (define-key evil-normal-state-map (kbd "q") 'avy-goto-char-timer)
 (define-key evil-normal-state-map (kbd "Q") 'evil-record-macro)
 
+(define-key emmet-mode-keymap (kbd "TAB") 'emmet-expand-line) ; <C-j> and <C-return> by default
+
 ;; EVIL + MAGIT
 ;; optional: this is the evil state that evil-magit will use
 ;; (setq evil-magit-state 'normal)
@@ -156,6 +158,7 @@
   "bb" 'helm-projectile-switch-to-buffer
   "bd" 'kill-this-buffer
   "bm" 'view-echo-area-messages
+  ";" 'frog-jump-buffer
 )
 
 ;; Window

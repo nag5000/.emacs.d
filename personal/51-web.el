@@ -1,3 +1,4 @@
+(prelude-require-package 'emmet-mode)
 (require 'emmet-mode)
 
 ;; Make sure that these lovely templating languages use web-mode
@@ -15,7 +16,9 @@
 ;; Emmet is a plugin for many popular text editors which greatly improves HTML & CSS workflow
 (add-hook 'sgml-mode-hook 'emmet-mode)
 (add-hook 'web-mode-hook 'emmet-mode)
+(add-hook 'css-mode-hook 'emmet-mode)
 (setq emmet-indentation 2)
+(setq emmet-self-closing-tag-style "") ;; default "/"
 
 (setq
   web-mode-markup-indent-offset 2
