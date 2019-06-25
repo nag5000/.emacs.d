@@ -1,5 +1,5 @@
 (prelude-require-packages '(yasnippet iedit evil-iedit-state highlight-thing
-                                      evil-goggles evil-matchit eacl))
+                                      evil-goggles evil-matchit eacl lorem-ipsum))
 
 ;; Yet another snippet library, which is awesome. Allows you to expand
 ;; commonly used code templates into your buffer. Use it everywhere!
@@ -63,3 +63,7 @@
 (add-to-list 'projectile-other-file-alist '("hbs" "js" "scss" "css"))
 (add-to-list 'projectile-other-file-alist '("scss" "hbs" "js" "css"))
 (add-to-list 'projectile-other-file-alist '("css" "hbs" "js" "scss"))
+
+;; Fast "helm-projectile-find-file" (SPC p f)
+;; Use projectile-invalidate-cache to clear cache (SPC p I)
+(setq projectile-enable-caching t)

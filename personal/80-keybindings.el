@@ -193,6 +193,7 @@
   "pf" 'projectile-find-file
   "p'" 'xx/projectile-shell-pop
   "p!" 'projectile-run-shell-command-in-root
+  "pI" 'projectile-invalidate-cache
 )
 
 ;; ?

@@ -1,9 +1,9 @@
-(setq prelude-theme 'doom-one)
+(setq prelude-theme 'zenburn)
 
 ;; Set default font
 (set-face-attribute 'default nil
-                    :family "Source Code Pro"
-                    :height 110
+                    :family "Meslo LG M"
+                    :height 120
                     :weight 'normal
                     :width 'normal)
 
