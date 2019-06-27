@@ -24,7 +24,7 @@
 ;; If you are expereicing the laggy issue, especially while editing remote files
 ;; with tramp, please try `file-name' style.
 ;; Please refer to https://github.com/bbatsov/projectile/issues/657.
-;;(setq doom-modeline-buffer-file-name-style 'truncate-upto-project)
+(setq doom-modeline-buffer-file-name-style 'relative-from-project)
 
 ;; Whether display icons in mode-line or not.
 ;;(setq doom-modeline-icon t)
@@ -53,13 +53,13 @@
 ;;(setq doom-modeline-buffer-encoding t)
 
 ;; Whether display indentation information.
-;;(set doom-modeline-indent-info nil)
+;;(setq doom-modeline-indent-info nil)
 
 ;; If non-nil, only display one number for checker information if applicable.
 ;;(setq doom-modeline-checker-simple-format t)
 
 ;; The maximum displayed length of the branch name of version control.
-;;(setq doom-modeline-vcs-max-length 12)
+(setq doom-modeline-vcs-max-length 30)
 
 ;; Whether display perspective name or not. Non-nil to display in mode-line.
 ;;(setq doom-modeline-persp-name t)
