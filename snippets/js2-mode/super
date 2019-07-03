@@ -1,0 +1,4 @@
+# key: sup
+# name: super
+# --
+this._super(...arguments);
