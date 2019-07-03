@@ -216,6 +216,11 @@
 (require 'ember-mode)
 (evil-leader/set-key "e" 'ember-command-prefix)
 
+;; Open...
+(evil-leader/set-key
+  "or" 'browse-at-remote
+)
+
 ;; Quit
 (evil-leader/set-key
   "qq" 'save-buffers-kill-emacs
