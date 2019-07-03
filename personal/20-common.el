@@ -1,5 +1,6 @@
-(prelude-require-packages '(yasnippet iedit evil-iedit-state highlight-thing
-                                      evil-goggles evil-matchit eacl lorem-ipsum))
+(prelude-require-packages '(yasnippet yasnippet-snippets iedit evil-iedit-state
+                                      highlight-thing evil-goggles evil-matchit
+                                      eacl lorem-ipsum))
 
 ;; Yet another snippet library, which is awesome. Allows you to expand
 ;; commonly used code templates into your buffer. Use it everywhere!
