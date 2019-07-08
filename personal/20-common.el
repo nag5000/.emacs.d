@@ -1,5 +1,5 @@
 (prelude-require-packages '(yasnippet yasnippet-snippets iedit evil-iedit-state
-                                      highlight-thing evil-goggles evil-matchit
+                                      highlight-thing evil-matchit
                                       eacl lorem-ipsum))
 
 ;; Yet another snippet library, which is awesome. Allows you to expand
@@ -20,10 +20,6 @@
 (setq highlight-thing-ignore-list '("false" "true" "null" "undefined" "let"))
 ;; NOTE: for JS mode there is lsp-mode with the same feature.
 (add-hook 'web-mode-hook 'highlight-thing-mode)
-
-;; https://github.com/edkolev/evil-goggles
-(require 'evil-goggles)
-(evil-goggles-mode)
 
 ;; Treat hyphen and underscore as word delimiters in Evil mode.
 ;; https://github.com/emacs-evil/evil#underscore-_-is-not-a-word-character
@@ -68,3 +64,8 @@
 ;; Fast "helm-projectile-find-file" (SPC p f)
 ;; Use projectile-invalidate-cache to clear cache (SPC p I)
 (setq projectile-enable-caching t)
+
+;; <[[>, <]]> go to next/prev change.
+(add-hook 'prog-mode-hook (lambda ()
+                            (highlight-changes-mode t)
+                            ))
