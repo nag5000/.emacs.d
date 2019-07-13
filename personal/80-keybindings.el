@@ -216,6 +216,7 @@
 (evil-leader/set-key
   "gs" 'magit-status
   "gd" 'magit-dispatch
+  "gt" 'git-timemachine-toggle
 )
 
 ;; ember-mode

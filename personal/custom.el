@@ -11,5 +11,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(highlight-changes ((t (:background "midnight blue"))))
- '(highlight-changes-delete ((t (:background "firebrick4")))))
+ '(highlight-changes ((t (:underline "dodger blue"))))
+ '(highlight-changes-delete ((t (:underline "red")))))
