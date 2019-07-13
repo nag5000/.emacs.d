@@ -69,3 +69,14 @@
 (add-hook 'prog-mode-hook (lambda ()
                             (highlight-changes-mode t)
                             ))
+
+;; In Evil mode, how can I prevent adding to the kill ring when I yank text,
+;; visual mode over other text, then paste over?
+;; https://emacs.stackexchange.com/questions/28135/in-evil-mode-how-can-i-prevent-adding-to-the-kill-ring-when-i-yank-text-visual
+(setq evil-kill-on-visual-paste nil)
+;;;; Also, don't yank text that was killed by "d" (delete) evil command:
+;; (defun evil-paste-after-from-0 ()
+;;   (interactive)
+;;   (let ((evil-this-register ?0))
+;;     (call-interactively 'evil-paste-after)))
+;; (define-key evil-normal-state-map "p" 'evil-paste-after-from-0)
