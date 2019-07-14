@@ -11,6 +11,11 @@
 
 (prelude-require-packages '(ember-mode))
 (setq ember-completion-system 'helm)
+(add-hook 'ember-mode-hook (lambda ()
+                             (if (equal major-mode 'js2-mode)
+                                 (yas-activate-extra-mode 'js2-mode-ember))
+                             (if (equal major-mode 'web-mode)
+                                 (yas-activate-extra-mode 'web-mode-ember))))
 
 (setq
   ;; Do not setup default flycheck or flymake checker by lsp-ui instead of already configured value.
