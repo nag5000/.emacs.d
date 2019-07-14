@@ -1,4 +1,4 @@
-(setq prelude-theme 'zenburn)
+(setq prelude-theme 'spacemacs-light)
 
 ;; Set default font
 (set-face-attribute 'default nil
