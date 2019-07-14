@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Ember.set
+# key: set
+# --
+set(${1:this}, '${2:key}', ${3:value});

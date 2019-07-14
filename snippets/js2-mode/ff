@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: es6 function
+# key: ff
+# --
+${1:foo}(${2:params}) {
+  ${3:// body}
+},

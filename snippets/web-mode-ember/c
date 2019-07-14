@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: component handlebars
+# key: c
+# --
+{{#${1:name}${2: prop="foo"}}}
+  ${3:body}
+{{/$1}}

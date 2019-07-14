@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Ember Computed Property
+# key: comp
+# --
+${1:foo}: computed('${2:key}', function() {
+${3:// body}
+}),
