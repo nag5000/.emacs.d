@@ -4,15 +4,14 @@
 ;; GLOBAL KEYINDINGS
 (global-set-key (kbd "<f5>") 'evil-write-all)
 
-;; <C-o>, <C-i> are also available by default.
 ;; jump commands act only within the current buffer.
+;; <C-o> (evil-jump-backward), <C-i> (evil-jump-forward)
+;; are available by default.
 (setq evil-jumps-cross-buffers nil)
-(global-set-key (kbd "<f6>") 'evil-jump-backward)
-(global-set-key (kbd "<f7>") 'evil-jump-forward)
-(global-set-key (kbd "<f8>") 'evil-show-jumps)
+(global-set-key (kbd "<f6>") 'evil-show-jumps)
 
-(global-set-key (kbd "<f9>")  'iflipb-previous-buffer)
-(global-set-key (kbd "<f10>") 'iflipb-next-buffer)
+(global-set-key (kbd "<f8>")  'iflipb-previous-buffer)
+(global-set-key (kbd "<f9>") 'iflipb-next-buffer)
 (global-set-key (kbd "C-x <left>") 'iflipb-previous-buffer)
 (global-set-key (kbd "C-x <right>") 'iflipb-next-buffer)
 (global-set-key (kbd "C-x <C-left>") 'iflipb-previous-buffer)
