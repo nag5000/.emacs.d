@@ -28,8 +28,8 @@
 (setq mwim-position-functions '(mwim-code-beginning mwim-code-end))
 
 ;; <C-n>, <C-.>, <C-/>, <C-c />
-(define-key evil-insert-state-map (kbd "C-.") 'eacl-complete-line)
-(define-key evil-insert-state-map (kbd "C-/") 'eacl-complete-multiline)
+(define-key evil-insert-state-map (kbd "C-/") 'eacl-complete-line)
+(define-key evil-insert-state-map (kbd "C-.") 'eacl-complete-multiline)
 (global-set-key (kbd "C-c /") 'company-files)  ; Force complete file names on "C-c /" key
 
 (define-key evil-normal-state-map (kbd "q") 'avy-goto-char-timer)
