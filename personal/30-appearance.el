@@ -32,3 +32,13 @@
 (prelude-require-package 'vi-tilde-fringe)
 (require 'vi-tilde-fringe)
 (global-vi-tilde-fringe-mode)
+
+;; https://github.com/ema2159/centaur-tabs
+(prelude-require-package 'centaur-tabs)
+(require 'centaur-tabs)
+(setq centaur-tabs-style "bar")
+(setq centaur-tabs-set-icons nil)
+(setq centaur-tabs-set-modified-marker t)
+(setq centaur-tabs-modified-marker "⚫")
+(setq centaur-tabs-cycle-scope 'tabs)
+(centaur-tabs-mode t)

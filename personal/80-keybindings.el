@@ -10,14 +10,14 @@
 (setq evil-jumps-cross-buffers nil)
 (global-set-key (kbd "<f6>") 'evil-show-jumps)
 
-(global-set-key (kbd "<f8>")  'iflipb-previous-buffer)
-(global-set-key (kbd "<f9>") 'iflipb-next-buffer)
-(global-set-key (kbd "C-x <left>") 'iflipb-previous-buffer)
-(global-set-key (kbd "C-x <right>") 'iflipb-next-buffer)
-(global-set-key (kbd "C-x <C-left>") 'iflipb-previous-buffer)
-(global-set-key (kbd "C-x <C-right>") 'iflipb-next-buffer)
-(global-set-key (kbd "C-<") 'iflipb-previous-buffer)
-(global-set-key (kbd "C->") 'iflipb-next-buffer)
+(global-set-key (kbd "<f8>")  'centaur-tabs-backward)
+(global-set-key (kbd "<f9>") 'centaur-tabs-forward)
+(global-set-key (kbd "C-x <left>") 'centaur-tabs-backward)
+(global-set-key (kbd "C-x <right>") 'centaur-tabs-forward)
+(global-set-key (kbd "C-x <C-left>") 'centaur-tabs-backward)
+(global-set-key (kbd "C-x <C-right>") 'centaur-tabs-forward)
+(global-set-key (kbd "C-<") 'centaur-tabs-backward)
+(global-set-key (kbd "C->") 'centaur-tabs-forward)
 
 ;; [C-a] Move to the beginning/end of code in the current line.
 ;; unbind inc/dec number (defined in prelude-evil.el).
