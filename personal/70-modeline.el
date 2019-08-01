@@ -4,12 +4,15 @@
 (setq sml/theme 'light)
 (sml/setup)
 
+(prelude-require-package 'flycheck-color-mode-line)
+(eval-after-load "flycheck"
+  '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
+
 (with-eval-after-load "hilit-chg"
   (diminish 'highlight-changes-mode))
 
 (diminish 'vi-tilde-fringe-mode)
 (diminish 'yas-minor-mode)
-(diminish 'flycheck-mode)
 (diminish 'company-mode)
 (diminish 'helm-mode)
 (diminish 'editorconfig-mode)
@@ -26,3 +29,5 @@
 
 (with-eval-after-load "ember-mode"
   (diminish 'ember-mode "ember"))
+
+(setq flycheck-mode-line-prefix "F")

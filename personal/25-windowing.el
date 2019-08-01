@@ -40,8 +40,19 @@
 
 
 ;; https://github.com/waymondo/frog-jump-buffer
-;; (prelude-require-package 'frog-jump-buffer)   --- MELPA submission is in progress (see ./00-vendor-frog-jump-buffer.el)
-;; (require 'frog-jump-buffer)
+(prelude-require-package 'frog-jump-buffer)
+(require 'frog-jump-buffer)
+
+(defun frog-jump-buffer-same-project ()
+  (interactive)
+  (let ((frog-jump-buffer-current-filter-function #'frog-jump-buffer-filter-same-project))
+    (frog-jump-buffer)))
+
+(dolist (regexp '("TAGS" "^\\*Compile-log" "-debug\\*$" "^\\:" "errors\\*$"
+                  "^\\*Backtrace" "-ls\\*$" "stderr\\*$" "^\\*Flymake"
+                  "^\\*vc" "^\\*Warnings" "^\\*eldoc" "\\^*Shell Command"
+                  "^\\magit:" "^\\magit-" "^\\*helm"))
+  (push regexp frog-jump-buffer-ignore-buffers))
 
 
 ;; evil-jump: kill buffer AND WINDOW TOO on <q> and <return> press.

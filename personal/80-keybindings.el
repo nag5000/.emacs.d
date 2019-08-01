@@ -162,7 +162,8 @@
   "bb" 'helm-projectile-switch-to-buffer
   "bd" 'kill-this-buffer
   "bm" 'view-echo-area-messages
-  ";" 'frog-jump-buffer
+  "bD" 'crux-kill-other-buffers
+  ";"  'frog-jump-buffer-same-project
 )
 
 ;; Window
@@ -216,6 +217,7 @@
   "gs" 'magit-status
   "gd" 'magit-dispatch
   "gt" 'git-timemachine-toggle
+  "gb" 'magit-blame
 )
 
 ;; ember-mode
