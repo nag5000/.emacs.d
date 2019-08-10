@@ -70,6 +70,23 @@
                             (highlight-changes-mode t)
                             ))
 
+;; Highlight-Changes mode.
+;; Taken from https://emacs-leuven.readthedocs.io/en/stable/#interactive-highlighting
+(with-eval-after-load "hilit-chg"
+  (defvar highlight-fringe-mark 'vertical-bar
+    "The fringe bitmap name marked at changed line.
+Should be selected from `fringe-bitmaps'.")
+
+  (defadvice hilit-chg-make-ov (after hilit-chg-add-fringe activate)
+    (mapc (lambda (ov)
+            (if (overlay-get ov 'hilit-chg)
+                (let ((fringe-anchor (make-string 1 ?x)))
+                  (put-text-property 0 1 'display
+                                     (list 'left-fringe highlight-fringe-mark)
+                                     fringe-anchor)
+                  (overlay-put ov 'before-string fringe-anchor))))
+          (overlays-at (ad-get-arg 1)))))
+
 ;; In Evil mode, how can I prevent adding to the kill ring when I yank text,
 ;; visual mode over other text, then paste over?
 ;; https://emacs.stackexchange.com/questions/28135/in-evil-mode-how-can-i-prevent-adding-to-the-kill-ring-when-i-yank-text-visual

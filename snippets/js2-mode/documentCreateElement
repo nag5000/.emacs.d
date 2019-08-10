@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: document.createElement
+# key: el
+# --
+const ${0:el} = document.createElement('${1:div}');

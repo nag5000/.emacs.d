@@ -38,9 +38,15 @@
 (define-key emmet-mode-keymap (kbd "TAB") 'emmet-expand-line) ; <C-j> and <C-return> by default
 
 ;; highlight-changes-mode
-;; <[[>, <]]> go to next/prev change.
-(define-key evil-motion-state-map (kbd "]]") 'highlight-changes-next-change)
-(define-key evil-motion-state-map (kbd "[[") 'highlight-changes-previous-change)
+;; <[c>, <]c> go to next/prev change.
+(define-key evil-motion-state-map (kbd "]c") 'highlight-changes-next-change)
+(define-key evil-motion-state-map (kbd "[c") 'highlight-changes-previous-change)
+
+(define-key evil-motion-state-map (kbd "]h") 'diff-hl-next-hunk)
+(define-key evil-motion-state-map (kbd "[h") 'diff-hl-previous-hunk)
+
+(define-key evil-motion-state-map (kbd "]e") 'flycheck-next-error)
+(define-key evil-motion-state-map (kbd "[e") 'flycheck-previous-error)
 
 ;; EVIL + MAGIT
 ;; optional: this is the evil state that evil-magit will use
@@ -234,8 +240,6 @@
   ;; highlight-changes-mode
   "hct" 'highlight-changes-visible-mode
   "hcc" (lambda () (interactive) (highlight-changes-remove-highlight (point-min) (point-max)))
-  "hcp" 'highlight-changes-previous-change ;; Better use <[[>.
-  "hcn" 'highlight-changes-next-change ;; Better use <]]>.
 )
 
 ;; Quit
