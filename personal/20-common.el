@@ -65,9 +65,10 @@
 ;; Use projectile-invalidate-cache to clear cache (SPC p I)
 (setq projectile-enable-caching t)
 
-;; <[[>, <]]> go to next/prev change.
 (add-hook 'prog-mode-hook (lambda ()
                             (highlight-changes-mode t)
+                            (diff-hl-flydiff-mode t)
+                            (diff-hl-margin-mode)
                             ))
 
 ;; Highlight-Changes mode.

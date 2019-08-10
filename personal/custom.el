@@ -22,6 +22,7 @@
  '(centaur-tabs-unselected-modified ((t (:inherit centaur-tabs-unselected))))
  '(flycheck-color-mode-line-error-face ((t (:background "pink" :box (:line-width 1 :color "red")))))
  '(flycheck-warning ((t (:underline (:color "#dc752f" :style wave)))))
+ '(fringe ((t (:background "#eaeaea" :foreground "gray60"))))
  '(frog-menu-posframe-background-face ((t (:inherit default :background "gray91"))))
  '(frog-menu-prompt-face ((t (:inherit default :background "gray84"))))
  '(header-line ((t (:background "#f2f2f2" :box (:line-width 1 :color "#c0c0c0") :overline nil :underline nil))))
