@@ -225,6 +225,7 @@
   "gt" 'git-timemachine-toggle
   "gb" 'magit-blame
   "gh" 'diff-hl-diff-goto-hunk
+  "gf" 'magit-log-buffer-file
 )
 
 ;; ember-mode
