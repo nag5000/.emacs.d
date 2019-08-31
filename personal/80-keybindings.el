@@ -19,6 +19,8 @@
 (global-set-key (kbd "C-<") 'centaur-tabs-backward)
 (global-set-key (kbd "C->") 'centaur-tabs-forward)
 
+(global-set-key (kbd "C-\\") 'helm-semantic-or-imenu)
+
 ;; [C-a] Move to the beginning/end of code in the current line.
 ;; unbind inc/dec number (defined in prelude-evil.el).
 (define-key evil-normal-state-map (kbd "C-A") nil)
@@ -113,6 +115,11 @@
 
 (evil-leader/set-key "/" 'helm-projectile-ag)
 
+;; <C-s> isearch-forward
+;; <C-r> isearch-backward
+;; <C-s> <C-s> isearch-forward with last used value.
+(evil-leader/set-key "*" 'isearch-forward-symbol-at-point)
+
 (evil-leader/set-key "!" 'shell-command)
 (evil-leader/set-key "'" 'shell-pop)
 
@@ -147,6 +154,12 @@
   "fy" 'show-and-copy-buffer-filename
   "ft" 'neotree-toggle
   "fo" 'helm-projectile-find-other-file
+)
+
+;; SEARCH
+(evil-leader/set-key
+  "sf" 'helm-do-ag
+  "ss" 'helm-occur
 )
 
 ;; BUFFER

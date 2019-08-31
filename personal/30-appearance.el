@@ -41,4 +41,6 @@
 (setq centaur-tabs-set-modified-marker t)
 (setq centaur-tabs-modified-marker "⚫")
 (setq centaur-tabs-cycle-scope 'tabs)
+(centaur-tabs-enable-buffer-reordering)
+(setq centaur-tabs-adjust-buffer-order 'right)
 (centaur-tabs-mode t)

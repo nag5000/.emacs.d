@@ -98,3 +98,5 @@ Should be selected from `fringe-bitmaps'.")
 ;;   (let ((evil-this-register ?0))
 ;;     (call-interactively 'evil-paste-after)))
 ;; (define-key evil-normal-state-map "p" 'evil-paste-after-from-0)
+
+(setq-default case-fold-search nil) ; make searches case sensitive (isearch)
