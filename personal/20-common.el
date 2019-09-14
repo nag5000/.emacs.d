@@ -1,6 +1,6 @@
 (prelude-require-packages '(yasnippet iedit evil-iedit-state
                                       highlight-thing evil-matchit
-                                      eacl lorem-ipsum tinypng))
+                                      eacl lorem-ipsum tinypng dumb-jump))
 
 ;; Yet another snippet library, which is awesome. Allows you to expand
 ;; commonly used code templates into your buffer. Use it everywhere!
