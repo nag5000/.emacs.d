@@ -27,6 +27,6 @@
   lsp-auto-guess-root t
 
   lsp-ui-sideline-enable nil
-  lsp-ui-doc-enable t)
+  lsp-ui-doc-enable nil)
 
 (add-hook 'js2-mode-hook 'lsp)
