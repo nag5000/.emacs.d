@@ -18,8 +18,8 @@
 ;; Don't highlight the thing at point itself. Default is nil.
 (setq highlight-thing-exclude-thing-under-point t)
 (setq highlight-thing-ignore-list '("false" "true" "null" "undefined" "let"))
-;; NOTE: for JS mode there is lsp-mode with the same feature.
 (add-hook 'web-mode-hook 'highlight-thing-mode)
+(add-hook 'js2-mode-hook 'highlight-thing-mode)
 
 ;; Treat hyphen and underscore as word delimiters in Evil mode.
 ;; https://github.com/emacs-evil/evil#underscore-_-is-not-a-word-character

@@ -1,3 +1,7 @@
+;; https://github.com/hinrik/total-lines
+(prelude-require-package 'total-lines)
+(global-total-lines-mode)
+
 (setq-default mode-line-format
               '("%e"
                 mode-line-front-space
@@ -24,7 +28,21 @@
                 ;; mode-line-buffer-identification
 
                 "  "
-                mode-line-position
+
+                ;; mode-line-position
+                ;; the below will look like e.g. "263/947:10"
+                (10
+                   "%l"
+                   "/"
+                   (:eval (format "%d" total-lines))
+                   (:eval (propertize (format ":%d" (1+ (current-column))) 'face
+                               (if (>= (current-column) 80)
+                                   'mode-line-80col-face
+                                 'mode-line-position-face)))
+                 )
+
+                " "
+
                 ;; evil-mode-line-tag
                 smartrep-mode-line-string
                 ;; (vc-mode vc-mode)
@@ -49,9 +67,10 @@
 (diminish 'which-key-mode)
 (diminish 'beacon-mode)
 (diminish 'highlight-thing-mode)
-(diminish 'lsp-mode "lsp")
 (diminish 'emmet-mode)
-(diminish 'hi-lock-mode)
+
+(eval-after-load "hi-lock"
+  '(diminish 'hi-lock-mode))
 
 (with-eval-after-load "ember-mode"
   (diminish 'ember-mode "ember"))
@@ -83,6 +102,8 @@
 (make-face 'mode-line-modified-face)
 (make-face 'mode-line-folder-face)
 (make-face 'mode-line-filename-face)
+(make-face 'mode-line-position-face)
+(make-face 'mode-line-80col-face)
 
 (set-face-attribute 'mode-line-read-only-face nil
                     :inherit 'mode-line-face
@@ -99,3 +120,10 @@
                     :inherit 'mode-line-face
                     :foreground "#00638a"
                     :weight 'bold)
+
+(set-face-attribute 'mode-line-position-face nil
+                    :inherit 'mode-line-face)
+
+(set-face-attribute 'mode-line-80col-face nil
+                    :inherit 'mode-line-position-face
+                    :foreground "black" :background "#eab700")
