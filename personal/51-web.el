@@ -26,3 +26,10 @@
   web-mode-code-indent-offset 2
   web-mode-enable-auto-quoting nil
   css-indent-offset 2)
+
+(add-hook 'web-mode-hook (lambda()
+  (make-local-variable 'company-backends)
+  (setq company-backends '((company-dabbrev-code
+                            company-keywords
+                            company-yasnippet)))
+))

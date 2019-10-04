@@ -16,3 +16,10 @@
                                  (yas-activate-extra-mode 'js2-mode-ember))
                              (if (equal major-mode 'web-mode)
                                  (yas-activate-extra-mode 'web-mode-ember))))
+
+(add-hook 'js2-mode-hook (lambda()
+  (make-local-variable 'company-backends)
+  (setq company-backends '((company-dabbrev-code
+                           company-keywords
+                           company-yasnippet)))
+))

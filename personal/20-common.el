@@ -54,7 +54,10 @@
   web-mode-code-indent-offset 2
   web-mode-sql-indent-offset 2
 
-  company-dabbrev-downcase nil)
+  company-dabbrev-downcase nil
+  company-dabbrev-code-other-buffers 'all
+  company-dabbrev-code-everywhere t
+  )
 
 (add-to-list 'projectile-other-file-alist '("js" "hbs" "scss" "css"))
 (add-to-list 'projectile-other-file-alist '("hbs" "js" "scss" "css"))
