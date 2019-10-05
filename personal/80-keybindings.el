@@ -168,6 +168,10 @@ T - tag prefix
 (define-key evil-insert-state-map (kbd "C-.") 'eacl-complete-multiline)
 (global-set-key (kbd "C-c /") 'company-files)  ; Force complete file names on "C-c /" key
 
+;; Using <C-n>, <C-p> (<M-n>, <M-p> by default) to select company candidates.
+(define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
+(define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+
 (define-key evil-normal-state-map (kbd "q") 'avy-goto-char-timer)
 (define-key evil-normal-state-map (kbd "Q") 'evil-record-macro)
 
