@@ -188,13 +188,33 @@ T - tag prefix
 (define-key evil-motion-state-map (kbd "]e") 'flycheck-next-error)
 (define-key evil-motion-state-map (kbd "[e") 'flycheck-previous-error)
 
-;; EVIL + MAGIT
+;; Evilify magit
 ;; optional: this is the evil state that evil-magit will use
 ;; (setq evil-magit-state 'normal)
 ;; optional: disable additional bindings for yanking text
 ;; (setq evil-magit-use-y-for-yank nil)
 (prelude-require-package 'evil-magit)
 (require 'evil-magit)
+
+;; Additional dired evilification
+(evil-define-key 'normal dired-mode-map
+  "gg" 'evil-goto-first-line
+  "G" 'evil-goto-line
+  "r" 'revert-buffer
+)
+
+;; Additional helm-grep evilification
+(evil-define-key 'normal helm-grep-mode-map
+  (kbd "RET") 'helm-grep-mode-jump-other-window
+  (kbd "q") 'quit-window
+)
+
+;; Additional helm-ag evilification
+(evil-define-key 'normal helm-ag-mode-map
+  (kbd "RET") 'helm-ag-mode-jump-other-window
+  (kbd "gr") 'helm-ag--update-save-results
+  (kbd "q") 'quit-window
+)
 
 ;; LEADER KEYBINDINGS INIT
 
