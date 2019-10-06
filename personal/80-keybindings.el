@@ -153,8 +153,6 @@ T - tag prefix
 (global-set-key (kbd "C-<") 'iflipb-previous-buffer)
 (global-set-key (kbd "C->") 'iflipb-next-buffer)
 
-(global-set-key (kbd "C-\\") 'helm-semantic-or-imenu)
-
 ;; [C-a] Move to the beginning/end of code in the current line.
 ;; unbind inc/dec number (defined in prelude-evil.el).
 (define-key evil-normal-state-map (kbd "C-A") nil)
@@ -174,6 +172,22 @@ T - tag prefix
 
 (define-key evil-normal-state-map (kbd "q") 'avy-goto-char-timer)
 (define-key evil-normal-state-map (kbd "Q") 'evil-record-macro)
+
+;; avy motions for evil "g"
+;; <gw> by default is evil-avy-goto-word-in-line
+(define-key evil-normal-state-map "gW" 'evil-avy-goto-word-0)
+(define-key evil-normal-state-map "gc" 'evil-avy-goto-char)
+(define-key evil-normal-state-map "gr" 'avy-resume)
+(define-key evil-normal-state-map "gl" 'evil-avy-goto-line-below)
+(define-key evil-normal-state-map "gL" 'evil-avy-goto-line-above)
+(define-key evil-normal-state-map "g(" 'avy-goto-open-paren)
+(define-key evil-normal-state-map "g)" 'avy-goto-close-paren)
+(define-key evil-normal-state-map "gh" 'avy-goto-function-def)
+(define-key evil-normal-state-map "gx" 'dumb-jump-hydra/body)
+(define-key evil-normal-state-map "gX" 'dumb-jump-go)
+(define-key evil-normal-state-map "g\\" 'helm-semantic-or-imenu)
+(define-key evil-normal-state-map "g," 'avy-goto-comma)
+(define-key evil-normal-state-map "g." 'avy-goto-dot)
 
 (define-key emmet-mode-keymap (kbd "TAB") 'emmet-expand-line) ; <C-j> and <C-return> by default
 
@@ -272,6 +286,7 @@ T - tag prefix
     (setq ad-return-value (cons new-msg new-bindings))))
 
 (evil-leader/set-key "/" 'helm-projectile-ag)
+(evil-leader/set-key "<SPC>" 'frog-jump-buffer-same-project)
 
 ;; <C-s> isearch-forward
 ;; <C-r> isearch-backward
@@ -280,24 +295,6 @@ T - tag prefix
 
 (evil-leader/set-key "!" 'shell-command)
 (evil-leader/set-key "'" 'shell-pop)
-
-;; AVY
-(evil-leader/set-key
-  "<SPC><SPC>" 'avy-goto-line
-  "<SPC>g" 'avy-goto-line
-  "<SPC>w" 'avy-goto-word-1
-  "<SPC>c" 'avy-goto-char
-  "<SPC>s" 'avy-goto-char-in-line
-  "<SPC>r" 'avy-resume
-
-  ;; Custom commands defined in _avy-commands.el.
-  "<SPC>a" 'avy-goto-word-in-line ;; also [gw] in normal state.
-  "<SPC>(" 'avy-goto-open-paren
-  "<SPC>)" 'avy-goto-close-paren
-  "<SPC>f" 'avy-goto-function-def
-  "<SPC>," 'avy-goto-comma
-  "<SPC>." 'avy-goto-dot
-)
 
 ;; FILE
 (evil-leader/set-key
@@ -340,7 +337,6 @@ T - tag prefix
   "bd" 'kill-this-buffer
   "bm" 'view-echo-area-messages
   "bD" 'crux-kill-other-buffers
-  ";"  'frog-jump-buffer-same-project
   "b TAB" 'switch-to-buffer-hydra/body
   "be" 'hydra-flycheck/body
 )
@@ -389,7 +385,6 @@ T - tag prefix
 ;; text
 (evil-leader/set-key
   "xa" 'align-regexp
-  "xg" 'dumb-jump-hydra/body
 )
 
 ;; VCS
