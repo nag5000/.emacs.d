@@ -52,9 +52,6 @@
 
 (setq evil-mode-line-format nil)
 
-(with-eval-after-load "hilit-chg"
-  (diminish 'highlight-changes-mode))
-
 (diminish 'vi-tilde-fringe-mode)
 (diminish 'yas-minor-mode)
 (diminish 'company-mode)

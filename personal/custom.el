@@ -21,8 +21,6 @@
  '(frog-menu-posframe-background-face ((t (:inherit default :background "gray91"))))
  '(frog-menu-prompt-face ((t (:inherit default :background "gray84"))))
  '(header-line ((t (:background "#f2f2f2" :box (:line-width 1 :color "#c0c0c0") :overline nil :underline nil))))
- '(highlight-changes ((t nil)))
- '(highlight-changes-delete ((t nil)))
  '(mode-line ((t (:background "gray95" :foreground "gray45" :inverse-video nil :box (:line-width 1 :color "#ccc") :height 110))))
  '(mode-line-inactive ((t (:background "#fbf8ef" :foreground "gray75" :inverse-video nil :box (:line-width 1 :color "gray90")))))
  '(shadow ((t (:background "#dee8ec" :foreground "#a094a2"))))

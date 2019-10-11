@@ -191,11 +191,6 @@ T - tag prefix
 
 (define-key emmet-mode-keymap (kbd "TAB") 'emmet-expand-line) ; <C-j> and <C-return> by default
 
-;; highlight-changes-mode
-;; <[c>, <]c> go to next/prev change.
-(define-key evil-motion-state-map (kbd "]c") 'highlight-changes-next-change)
-(define-key evil-motion-state-map (kbd "[c") 'highlight-changes-previous-change)
-
 (define-key evil-motion-state-map (kbd "]h") 'diff-hl-next-hunk)
 (define-key evil-motion-state-map (kbd "[h") 'diff-hl-previous-hunk)
 
@@ -404,13 +399,6 @@ T - tag prefix
 ;; Open...
 (evil-leader/set-key
   "or" 'browse-at-remote
-)
-
-;; Highlight...
-(evil-leader/set-key
-  ;; highlight-changes-mode
-  "hct" 'highlight-changes-visible-mode
-  "hcc" (lambda () (interactive) (highlight-changes-remove-highlight (point-min) (point-max)))
 )
 
 ;; Toggle
