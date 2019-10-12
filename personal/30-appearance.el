@@ -17,8 +17,7 @@
 (setq helm-buffers-end-truncated-string "…")
 
 (setq display-line-numbers-type 'relative)
-;;; Maybe it is better to use avy-goto-line (<SPC><SPC><SPC> or <SPC><SPC>g).
-;; (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 ;; https://www.emacswiki.org/emacs/SrSpeedbar
 ;; https://www.emacswiki.org/emacs/SpeedBar
