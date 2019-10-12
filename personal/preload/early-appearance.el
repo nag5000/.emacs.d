@@ -2,9 +2,11 @@
 
 ;; Set default font
 (set-face-attribute 'default nil
-                    :family "Meslo LG M"
+                    :foundry "xos4"
+                    :family "xos4 Terminus"
                     :height 120
                     :weight 'normal
-                    :width 'normal)
+                    :width 'normal
+                    :slant 'normal)
 
 (scroll-bar-mode -1)
