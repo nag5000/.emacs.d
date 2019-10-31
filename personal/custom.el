@@ -38,7 +38,7 @@
  '(frog-menu-posframe-background-face ((t (:inherit default :background "gray91"))))
  '(frog-menu-prompt-face ((t (:inherit default :background "gray84"))))
  '(header-line ((t (:background "#f2f2f2" :box (:line-width 1 :color "#c0c0c0") :overline nil :underline nil))))
- '(mode-line ((t (:background "gray95" :foreground "gray45" :inverse-video nil :box (:line-width 1 :color "#ccc") :height 110))))
+ '(mode-line ((t (:background "gray95" :foreground "gray45" :inverse-video nil :box (:line-width 1 :color "#ccc")))))
  '(mode-line-inactive ((t (:background "#fbf8ef" :foreground "gray75" :inverse-video nil :box (:line-width 1 :color "gray90")))))
  '(shadow ((t (:background "LightBlue3" :foreground "white smoke"))))
  '(sp-show-pair-match-face ((t (:inherit bold :foreground "#ba2f59" :underline nil))))
