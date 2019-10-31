@@ -7,3 +7,11 @@
 
 (with-eval-after-load 'dired
   (define-key dired-mode-map ")" 'dired-git-info-mode))
+
+(require 'dired+)
+;; Tell Dired to reuse Dired buffers.
+;; Alt: M-x ibuffer, * / to mark buffers in dired mode, D to delete them.
+(diredp-toggle-find-file-reuse-dir 1)
+(setq diredp-hide-details-initially-flag nil)
+;; -al is default. -h for human-readable file sizes.
+(setq dired-listing-switches "-alh")

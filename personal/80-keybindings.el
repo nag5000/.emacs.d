@@ -197,6 +197,8 @@ T - tag prefix
 (define-key evil-motion-state-map (kbd "]e") 'flycheck-next-error)
 (define-key evil-motion-state-map (kbd "[e") 'flycheck-previous-error)
 
+(define-key evil-motion-state-map (kbd "\\") 'helm-resume)
+
 ;; Evilify magit
 ;; optional: this is the evil state that evil-magit will use
 ;; (setq evil-magit-state 'normal)
@@ -331,7 +333,7 @@ T - tag prefix
   "bb" 'helm-projectile-switch-to-buffer
   "bd" 'kill-this-buffer
   "bm" 'view-echo-area-messages
-  "bD" 'crux-kill-other-buffers
+  "bD" (lambda () (interactive) (crux-kill-other-buffers) (kill-dired-buffers))
   "b TAB" 'switch-to-buffer-hydra/body
   "be" 'hydra-flycheck/body
 )
@@ -399,6 +401,9 @@ T - tag prefix
 ;; Open...
 (evil-leader/set-key
   "or" 'browse-at-remote
+  "o0b" '0x0-upload
+  "o0f" '0x0-upload-file
+  "o0s" '0x0-upload-string
 )
 
 ;; Toggle
