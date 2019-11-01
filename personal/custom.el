@@ -42,5 +42,6 @@
  '(mode-line-inactive ((t (:background "#fbf8ef" :foreground "gray75" :inverse-video nil :box (:line-width 1 :color "gray90")))))
  '(shadow ((t (:background "LightBlue3" :foreground "white smoke"))))
  '(sp-show-pair-match-face ((t (:inherit bold :foreground "#ba2f59" :underline nil))))
+ '(web-mode-block-attr-name-face ((t (:foreground "tomato1"))))
  '(web-mode-block-control-face ((t (:inherit font-lock-preprocessor-face :background "#ffebdf"))))
  '(whitespace-line ((t (:foreground "unspecified" :underline (:color "MediumOrchid1" :style wave))))))
