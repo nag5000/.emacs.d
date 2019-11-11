@@ -23,6 +23,7 @@
 
                 (:propertize (:eval (shorten-directory default-directory 20))
                              face mode-line-folder-face)
+                " "
                 (:propertize "%b"
                              face mode-line-filename-face)
                 ;; mode-line-buffer-identification
