@@ -1,7 +1,7 @@
 (prelude-require-packages '(yasnippet iedit evil-iedit-state
                                       highlight-thing evil-matchit
                                       eacl lorem-ipsum tinypng dumb-jump
-                                      0x0))
+                                      0x0 bluetooth))
 
 ;; Yet another snippet library, which is awesome. Allows you to expand
 ;; commonly used code templates into your buffer. Use it everywhere!
@@ -86,3 +86,9 @@
 ;; (define-key evil-normal-state-map "p" 'evil-paste-after-from-0)
 
 (setq-default case-fold-search nil) ; make searches case sensitive (isearch)
+
+(setq echo-keystrokes 0.02)
+(setq-default indicate-buffer-boundaries 'left)
+(setq large-file-warning-threshold (* 1024 1024))
+(setq-default tab-width 2)
+(setq sentence-end-double-space nil)

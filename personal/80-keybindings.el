@@ -173,9 +173,13 @@ T - tag prefix
 (define-key evil-normal-state-map (kbd "q") 'avy-goto-char-timer)
 (define-key evil-normal-state-map (kbd "Q") 'evil-record-macro)
 
+(define-key evil-normal-state-map (kbd "<down>") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "<up>") 'evil-previous-visual-line)
+
 ;; avy motions for evil "g"
 ;; <gw> by default is evil-avy-goto-word-in-line
-(define-key evil-normal-state-map "gW" 'evil-avy-goto-word-0)
+(define-key evil-normal-state-map "gW" 'evil-avy-goto-word-in-line)
+(define-key evil-normal-state-map "gw" 'evil-avy-goto-word-1)
 (define-key evil-normal-state-map "gc" 'evil-avy-goto-char)
 (define-key evil-normal-state-map "gr" 'avy-resume)
 (define-key evil-normal-state-map "gl" 'evil-avy-goto-line-below)
@@ -250,6 +254,10 @@ T - tag prefix
 (evil-mode nil)
 (global-evil-leader-mode)
 (evil-mode 1)
+
+;; Disable evil-mode for some modes.
+(evil-set-initial-state 'calendar-mode 'emacs)
+(evil-set-initial-state 'bluetooth-mode 'emacs)
 
 ;; LEADER KEYBINDINGS
 
@@ -404,6 +412,7 @@ T - tag prefix
   "o0b" '0x0-upload
   "o0f" '0x0-upload-file
   "o0s" '0x0-upload-string
+  "ob" 'bluetooth-list-devices
 )
 
 ;; Toggle

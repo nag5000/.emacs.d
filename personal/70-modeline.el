@@ -50,7 +50,14 @@
                 mode-line-modes mode-line-misc-info mode-line-end-spaces
                 ))
 
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+(setq uniquify-after-kill-buffer-p t)    ; update uniq names after killing buffer
+(setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
+
 (setq evil-mode-line-format nil)
+(setq line-number-mode nil) ;; custom mode-line-format is used
+(setq size-indication-mode nil) ;; custom mode-line-format is used
+(setq column-number-mode nil) ;; custom mode-line-format is used
 
 (diminish 'vi-tilde-fringe-mode)
 (diminish 'yas-minor-mode)
