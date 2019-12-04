@@ -25,16 +25,17 @@
     (define-key m (kbd "C-c C-c") 'iresize-mode)
     m))
 
-(define-minor-mode iresize-mode
-  :initial-value nil
-  :lighter " IResize"
-  :keymap iresize-mode-map
-  :group 'iresize
+;;;; commented out: strange error on emacs 27
+;;(define-minor-mode iresize-mode
+;;  :initial-value nil
+;;  :lighter " IResize"
+;;  :keymap iresize-mode-map
+;;  :group 'iresize
 
-  (if iresize-mode
-      (progn
-        (message "Resize window mode enabled: [k] enlarge, [j] shrink, [q] quit.")
-        (evil-normalize-keymaps))
-      (message "Resize window mode disabled")))
-
-(provide 'iresize)
+;;  (if iresize-mode
+;;      (progn
+;;        (message "Resize window mode enabled: [k] enlarge, [j] shrink, [q] quit.")
+;;        (evil-normalize-keymaps))
+;;      (message "Resize window mode disabled")))
+;;
+;;(provide 'iresize)

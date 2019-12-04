@@ -70,7 +70,7 @@
 (diminish 'smartparens-mode)
 (diminish 'prelude-mode)
 (diminish 'which-key-mode)
-(diminish 'beacon-mode)
+;; (diminish 'beacon-mode)
 (diminish 'highlight-thing-mode)
 (diminish 'emmet-mode)
 
