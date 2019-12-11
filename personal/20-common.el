@@ -29,7 +29,8 @@
 ;;   - (add-hook 'c-mode-common-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 (add-hook 'after-change-major-mode-hook #'(lambda ()
                                             (modify-syntax-entry ?_ "w")
-                                            (modify-syntax-entry ?- "w")))
+                                            ;; (modify-syntax-entry ?- "w")
+                                            ))
 
 
 (require 'evil-matchit)

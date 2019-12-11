@@ -11,6 +11,8 @@
 ;; If non-nil, the hidden files are shown by default.
 (setq neo-show-hidden-files t)
 
+(setq neo-theme 'arrow)
+
 ;; Use with evil mode
 (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-quick-look)
 (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)

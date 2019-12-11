@@ -135,6 +135,26 @@ T - tag prefix
   ("G" (progn (goto-char (point-max)) (flycheck-previous-error)) "Last")
   ("q" nil "quit"))
 
+(defhydra hydra-git-timemachine (:hint nil :color pink :foreign-keys run)
+"
+[_n_] next rev  [_p_] prev rev [_c_] show current [_g_] go to revision [_b_] switch branch
+[_w_] abbrv hash [_W_] full hash [_q_] quit
+"
+  ("n" git-timemachine-show-next-revision)
+  ("p" git-timemachine-show-previous-revision)
+  ("c" git-timemachine-show-current-revision)
+  ("g" git-timemachine-show-nth-revision)
+  ("b" git-timemachine-switch-branch)
+  ("w" git-timemachine-kill-abbreviated-revision)
+  ("W" git-timemachine-kill-revision)
+  ("q" git-timemachine-quit :color blue)
+)
+
+;; (defadvice git-timemachine-mode (after toggle-evil activate)
+;;   "Turn off `evil-local-mode' when enabling `git-timemachine-mode',
+;;       and turn it back on when disabling `git-timemachine-mode'."
+;;   (evil-local-mode (if git-timemachine-mode -1 1)))
+
 ;; GLOBAL KEYINDINGS
 (global-set-key (kbd "<f5>") 'evil-write-all)
 
@@ -142,7 +162,7 @@ T - tag prefix
 ;; <C-o> (evil-jump-backward), <C-i> (evil-jump-forward)
 ;; are available by default.
 (setq evil-jumps-cross-buffers nil)
-(global-set-key (kbd "<f6>") 'evil-show-jumps)
+;; (global-set-key (kbd "<f6>") 'evil-show-jumps)
 
 (global-set-key (kbd "<f8>")  'iflipb-previous-buffer)
 (global-set-key (kbd "<f9>") 'iflipb-next-buffer)
@@ -189,7 +209,7 @@ T - tag prefix
 (define-key evil-normal-state-map "gh" 'avy-goto-function-def)
 (define-key evil-normal-state-map "gx" 'dumb-jump-hydra/body)
 (define-key evil-normal-state-map "gX" 'dumb-jump-go)
-(define-key evil-normal-state-map "g\\" 'helm-semantic-or-imenu)
+(define-key evil-normal-state-map "g\\" 'counsel-semantic-or-imenu)
 (define-key evil-normal-state-map "g," 'avy-goto-comma)
 (define-key evil-normal-state-map "g." 'avy-goto-dot)
 
@@ -201,7 +221,7 @@ T - tag prefix
 (define-key evil-motion-state-map (kbd "]e") 'flycheck-next-error)
 (define-key evil-motion-state-map (kbd "[e") 'flycheck-previous-error)
 
-(define-key evil-motion-state-map (kbd "\\") 'helm-resume)
+(define-key evil-motion-state-map (kbd "\\") 'ivy-resume)
 
 ;; Evilify magit
 ;; optional: this is the evil state that evil-magit will use
@@ -264,9 +284,30 @@ T - tag prefix
 (evil-leader/set-key "v" 'er/expand-region)
 (setq expand-region-contract-fast-key "V")
 
+;; (defun ivy-with-thing-at-point (cmd)
+;;   (let ((ivy-initial-inputs-alist
+;;          (list
+;;           (cons cmd (thing-at-point 'symbol)))))
+;;     (funcall cmd)))
+
+;; (defun counsel-ag-thing-at-point ()
+;;   (interactive)
+;;   (ivy-with-thing-at-point 'counsel-ag))
+
+;; (defun counsel-projectile-ag-thing-at-point ()
+;;   (interactive)
+;;   (ivy-with-thing-at-point 'counsel-projectile-ag))
+
+(defun selection-at-point ()
+  (interactive)
+  (if (use-region-p)
+      (buffer-substring-no-properties (region-beginning) (region-end))))
+
+(setq counsel-projectile-ag-initial-input '(selection-at-point))
+
 ;; add search capability to expand-region
 (defadvice er/prepare-for-more-expansions-internal
-    (around helm-ag/prepare-for-more-expansions-internal activate)
+    (around counsel-ag/prepare-for-more-expansions-internal activate)
   ad-do-it
   (let ((new-msg (concat (car ad-return-value)
                          ", / to search in project, "
@@ -276,21 +317,11 @@ T - tag prefix
     (cl-pushnew
      '("/" (lambda ()
              (call-interactively
-              'helm-projectile-ag)))
-     new-bindings)
-    (cl-pushnew
-     '("f" (lambda ()
-             (call-interactively
-              'helm-do-ag)))
-     new-bindings)
-    (cl-pushnew
-     '("b" (lambda ()
-             (call-interactively
-              'helm-do-ag-buffers)))
+              'counsel-projectile-ag)))
      new-bindings)
     (setq ad-return-value (cons new-msg new-bindings))))
 
-(evil-leader/set-key "/" 'helm-projectile-ag)
+(evil-leader/set-key "/" 'counsel-projectile-ag)
 (evil-leader/set-key "<SPC>" 'frog-jump-buffer-same-project)
 
 ;; <C-s> isearch-forward
@@ -301,11 +332,18 @@ T - tag prefix
 (evil-leader/set-key "!" 'shell-command)
 (evil-leader/set-key "'" 'shell-pop)
 
+(defun counsel-ag-read-dir ()
+  (interactive)
+  (let ((current-prefix-arg 4)) ;; emulate C-u
+    (call-interactively 'counsel-ag)
+    )
+  )
+
 ;; FILE
 (evil-leader/set-key
-  "fa" 'helm-do-ag
+  "fa" 'counsel-ag-read-dir
   "ff" 'projectile-find-file-in-directory
-  "fr" 'helm-recentf
+  "fr" 'counsel-recentf
   "fj" 'dired-jump
   "fs" 'save-buffer
   "fS" 'evil-write-all
@@ -313,13 +351,14 @@ T - tag prefix
   "fR" 'rename-current-buffer-file
   "fy" 'show-and-copy-buffer-filename
   "ft" 'neotree-toggle
-  "fo" 'helm-projectile-find-other-file
+  "fo" 'projectile-find-other-file
 )
 
 ;; SEARCH
 (evil-leader/set-key
-  "sf" 'helm-do-ag
-  "ss" 'helm-occur
+  "sf" 'counsel-ag-read-dir
+  "ss" 'swiper-thing-at-point
+  "sa" 'swiper-all-thing-at-point
 )
 
 ;; BUFFER
@@ -337,8 +376,8 @@ T - tag prefix
   "b0" (lambda () (interactive) (iflipb-select-buffer 9))
   "bn" 'iflipb-next-buffer
   "bp" 'iflipb-previous-buffer
-  "ba" 'helm-buffers-list
-  "bb" 'helm-projectile-switch-to-buffer
+  "ba" 'counsel-ibuffer
+  "bb" 'projectile-switch-to-buffer
   "bd" 'kill-this-buffer
   "bm" 'view-echo-area-messages
   "bD" (lambda () (interactive) (crux-kill-other-buffers) (kill-dired-buffers))
@@ -384,7 +423,7 @@ T - tag prefix
 
 ;; ?
 (evil-leader/set-key
-  "rl" 'helm-resume
+  "rl" 'ivy-resume
 )
 
 ;; text
@@ -396,7 +435,7 @@ T - tag prefix
 (evil-leader/set-key
   "gs" 'magit-status
   "gd" 'magit-dispatch
-  "gt" 'git-timemachine-toggle
+  "gt" (lambda () (interactive) (git-timemachine-toggle) (hydra-git-timemachine/body))
   "gb" 'magit-blame
   "gh" 'diff-hl-diff-goto-hunk
   "gf" 'magit-log-buffer-file

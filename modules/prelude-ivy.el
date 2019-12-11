@@ -31,7 +31,7 @@
 ;; Boston, MA 02110-1301, USA.
 
 ;;; Code:
-(prelude-require-packages '(ivy swiper counsel))
+(prelude-require-packages '(ivy swiper counsel counsel-projectile ivy-hydra))
 
 ;; ivy is a powerful alternative to the popular ido-mode
 
@@ -40,6 +40,7 @@
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
 (setq enable-recursive-minibuffers t)
+(setq ivy-on-del-error-function #'ignore)
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 (global-set-key (kbd "<f6>") 'ivy-resume)
 
