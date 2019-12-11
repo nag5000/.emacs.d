@@ -209,7 +209,7 @@ T - tag prefix
 (define-key evil-normal-state-map "gh" 'avy-goto-function-def)
 (define-key evil-normal-state-map "gx" 'dumb-jump-hydra/body)
 (define-key evil-normal-state-map "gX" 'dumb-jump-go)
-(define-key evil-normal-state-map "g\\" 'counsel-semantic-or-imenu)
+(define-key evil-normal-state-map "g\\" 'helm-semantic-or-imenu)
 (define-key evil-normal-state-map "g," 'avy-goto-comma)
 (define-key evil-normal-state-map "g." 'avy-goto-dot)
 
@@ -221,7 +221,7 @@ T - tag prefix
 (define-key evil-motion-state-map (kbd "]e") 'flycheck-next-error)
 (define-key evil-motion-state-map (kbd "[e") 'flycheck-previous-error)
 
-(define-key evil-motion-state-map (kbd "\\") 'ivy-resume)
+(define-key evil-motion-state-map (kbd "\\") 'helm-resume)
 
 ;; Evilify magit
 ;; optional: this is the evil state that evil-magit will use
@@ -284,30 +284,9 @@ T - tag prefix
 (evil-leader/set-key "v" 'er/expand-region)
 (setq expand-region-contract-fast-key "V")
 
-;; (defun ivy-with-thing-at-point (cmd)
-;;   (let ((ivy-initial-inputs-alist
-;;          (list
-;;           (cons cmd (thing-at-point 'symbol)))))
-;;     (funcall cmd)))
-
-;; (defun counsel-ag-thing-at-point ()
-;;   (interactive)
-;;   (ivy-with-thing-at-point 'counsel-ag))
-
-;; (defun counsel-projectile-ag-thing-at-point ()
-;;   (interactive)
-;;   (ivy-with-thing-at-point 'counsel-projectile-ag))
-
-(defun selection-at-point ()
-  (interactive)
-  (if (use-region-p)
-      (buffer-substring-no-properties (region-beginning) (region-end))))
-
-(setq counsel-projectile-ag-initial-input '(selection-at-point))
-
 ;; add search capability to expand-region
 (defadvice er/prepare-for-more-expansions-internal
-    (around counsel-ag/prepare-for-more-expansions-internal activate)
+    (around helm-ag/prepare-for-more-expansions-internal activate)
   ad-do-it
   (let ((new-msg (concat (car ad-return-value)
                          ", / to search in project, "
@@ -317,11 +296,11 @@ T - tag prefix
     (cl-pushnew
      '("/" (lambda ()
              (call-interactively
-              'counsel-projectile-ag)))
+              'helm-do-ag-buffers)))
      new-bindings)
     (setq ad-return-value (cons new-msg new-bindings))))
 
-(evil-leader/set-key "/" 'counsel-projectile-ag)
+(evil-leader/set-key "/" 'helm-projectile-ag)
 (evil-leader/set-key "<SPC>" 'frog-jump-buffer-same-project)
 
 ;; <C-s> isearch-forward
@@ -332,18 +311,11 @@ T - tag prefix
 (evil-leader/set-key "!" 'shell-command)
 (evil-leader/set-key "'" 'shell-pop)
 
-(defun counsel-ag-read-dir ()
-  (interactive)
-  (let ((current-prefix-arg 4)) ;; emulate C-u
-    (call-interactively 'counsel-ag)
-    )
-  )
-
 ;; FILE
 (evil-leader/set-key
-  "fa" 'counsel-ag-read-dir
+  "fa" 'helm-do-ag
   "ff" 'projectile-find-file-in-directory
-  "fr" 'counsel-recentf
+  "fr" 'helm-recentf
   "fj" 'dired-jump
   "fs" 'save-buffer
   "fS" 'evil-write-all
@@ -356,9 +328,8 @@ T - tag prefix
 
 ;; SEARCH
 (evil-leader/set-key
-  "sf" 'counsel-ag-read-dir
-  "ss" 'swiper-thing-at-point
-  "sa" 'swiper-all-thing-at-point
+  "sf" 'helm-do-ag
+  "ss" 'helm-occur
 )
 
 ;; BUFFER
@@ -376,7 +347,7 @@ T - tag prefix
   "b0" (lambda () (interactive) (iflipb-select-buffer 9))
   "bn" 'iflipb-next-buffer
   "bp" 'iflipb-previous-buffer
-  "ba" 'counsel-ibuffer
+  "ba" 'helm-buffer-list
   "bb" 'projectile-switch-to-buffer
   "bd" 'kill-this-buffer
   "bm" 'view-echo-area-messages
@@ -423,7 +394,7 @@ T - tag prefix
 
 ;; ?
 (evil-leader/set-key
-  "rl" 'ivy-resume
+  "rl" 'helm-resume
 )
 
 ;; text
