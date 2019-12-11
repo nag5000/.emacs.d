@@ -277,7 +277,6 @@ T - tag prefix
 
 ;; Disable evil-mode for some modes.
 (evil-set-initial-state 'calendar-mode 'emacs)
-(evil-set-initial-state 'bluetooth-mode 'emacs)
 
 ;; LEADER KEYBINDINGS
 
@@ -422,7 +421,7 @@ T - tag prefix
   "o0b" '0x0-upload
   "o0f" '0x0-upload-file
   "o0s" '0x0-upload-string
-  "ob" 'bluetooth-list-devices
+  "oj" 'reveal-in-folder
 )
 
 ;; Toggle
