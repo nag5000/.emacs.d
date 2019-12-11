@@ -346,7 +346,7 @@ T - tag prefix
   "b0" (lambda () (interactive) (iflipb-select-buffer 9))
   "bn" 'iflipb-next-buffer
   "bp" 'iflipb-previous-buffer
-  "ba" 'helm-buffer-list
+  "ba" 'helm-buffers-list
   "bb" 'projectile-switch-to-buffer
   "bd" 'kill-this-buffer
   "bm" 'view-echo-area-messages
