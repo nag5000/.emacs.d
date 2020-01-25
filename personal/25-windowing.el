@@ -1,5 +1,5 @@
 ;; https://github.com/wasamasa/shackle
-(prelude-require-package 'shackle)
+(prelude-require-packages '(shackle window-numbering))
 (require 'shackle)
 
 (setq shackle-default-rule '(:select t))
@@ -10,7 +10,7 @@
     ("\\*shell\\*" :regexp t :same t)
     (neotree-mode :select t :align left)
     ;; from https://github.com/wasamasa/shackle#examples
-    ("\\`\\*helm.*?\\*\\'" :regexp t :align t :size 0.4)
+    ;; ("\\`\\*helm.*?\\*\\'" :regexp t :align t :size 0.4)
     (magit-status-mode :select t :inhibit-window-quit t :same t)
     (magit-log-mode :select t :inhibit-window-quit t :same t)
     ;; noselect to select commit message buffer instead
@@ -22,6 +22,7 @@
 (setq helm-display-function 'pop-to-buffer) ; make helm play nice
 
 (shackle-mode)
+(window-numbering-mode)
 
 
 ;; https://github.com/jrosdahl/iflipb

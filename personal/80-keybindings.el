@@ -164,6 +164,8 @@ T - tag prefix
 (setq evil-jumps-cross-buffers nil)
 ;; (global-set-key (kbd "<f6>") 'evil-show-jumps)
 
+(global-set-key (kbd "s-w") 'evil-window-next)
+
 (global-set-key (kbd "<f8>")  'iflipb-previous-buffer)
 (global-set-key (kbd "<f9>") 'iflipb-next-buffer)
 (global-set-key (kbd "C-x <left>") 'iflipb-previous-buffer)
@@ -196,20 +198,56 @@ T - tag prefix
 (define-key evil-normal-state-map (kbd "<down>") 'evil-next-visual-line)
 (define-key evil-normal-state-map (kbd "<up>") 'evil-previous-visual-line)
 
+;; Reset default - and + keybindings
+;; to evil-previous-line-first-non-blank and evil-next-line-first-non-blank.
+;; Needed for expand-region keybindings.
+(define-key evil-motion-state-map (kbd "-") nil)
+(define-key evil-motion-state-map (kbd "+") nil)
+
+(global-set-key (kbd "M-a") 'projectile-find-file)
+(global-set-key (kbd "M-s") 'helm-projectile-ag)
+(global-set-key (kbd "M-r") 'helm-resume)
+(global-set-key (kbd "M-q") 'helm-all-mark-rings)
+(global-set-key (kbd "M-`") 'projectile-switch-to-buffer)
+(global-set-key (kbd "M-z") 'crux-switch-to-previous-buffer)
+(global-set-key (kbd "C-s") 'helm-occur)
+(global-set-key (kbd "s-y") 'helm-show-kill-ring)
+
+(define-key dired-mode-map "\M-a" nil)
+(define-key dired-mode-map "\M-s" nil)
+(define-key dired-mode-map "\M-r" nil)
+(define-key dired-mode-map "\M-q" nil)
+(define-key dired-mode-map "\M-z" nil)
+
+(define-key evil-normal-state-map "ga" 'projectile-find-file)
+(define-key evil-normal-state-map "gs" 'helm-projectile-ag)
+(define-key evil-normal-state-map "gr" 'helm-resume)
+(define-key evil-normal-state-map "gz" 'crux-switch-to-previous-buffer)
+(define-key evil-normal-state-map "g`" 'projectile-switch-to-buffer)
+(define-key evil-normal-state-map "g1" (lambda () (interactive) (iflipb-select-buffer 0)))
+(define-key evil-normal-state-map "g2" (lambda () (interactive) (iflipb-select-buffer 1)))
+(define-key evil-normal-state-map "g3" (lambda () (interactive) (iflipb-select-buffer 2)))
+(define-key evil-normal-state-map "g4" (lambda () (interactive) (iflipb-select-buffer 3)))
+(define-key evil-normal-state-map "g5" (lambda () (interactive) (iflipb-select-buffer 4)))
+(define-key evil-normal-state-map "g6" (lambda () (interactive) (iflipb-select-buffer 5)))
+(define-key evil-normal-state-map "g7" (lambda () (interactive) (iflipb-select-buffer 6)))
+(define-key evil-normal-state-map "g8" (lambda () (interactive) (iflipb-select-buffer 7)))
+(define-key evil-normal-state-map "g9" (lambda () (interactive) (iflipb-select-buffer 8)))
+(define-key evil-normal-state-map "g0" (lambda () (interactive) (iflipb-select-buffer 9)))
+(define-key evil-normal-state-map "gx" 'dumb-jump-hydra/body)
+(define-key evil-normal-state-map "gX" 'dumb-jump-go)
+(define-key evil-normal-state-map "g\\" 'helm-semantic-or-imenu)
+
 ;; avy motions for evil "g"
 ;; <gw> by default is evil-avy-goto-word-in-line
 (define-key evil-normal-state-map "gW" 'evil-avy-goto-word-in-line)
 (define-key evil-normal-state-map "gw" 'evil-avy-goto-word-1)
 (define-key evil-normal-state-map "gc" 'evil-avy-goto-char)
-(define-key evil-normal-state-map "gr" 'avy-resume)
 (define-key evil-normal-state-map "gl" 'evil-avy-goto-line-below)
 (define-key evil-normal-state-map "gL" 'evil-avy-goto-line-above)
 (define-key evil-normal-state-map "g(" 'avy-goto-open-paren)
 (define-key evil-normal-state-map "g)" 'avy-goto-close-paren)
 (define-key evil-normal-state-map "gh" 'avy-goto-function-def)
-(define-key evil-normal-state-map "gx" 'dumb-jump-hydra/body)
-(define-key evil-normal-state-map "gX" 'dumb-jump-go)
-(define-key evil-normal-state-map "g\\" 'helm-semantic-or-imenu)
 (define-key evil-normal-state-map "g," 'avy-goto-comma)
 (define-key evil-normal-state-map "g." 'avy-goto-dot)
 
@@ -280,22 +318,17 @@ T - tag prefix
 
 ;; LEADER KEYBINDINGS
 
-(evil-leader/set-key "v" 'er/expand-region)
-(setq expand-region-contract-fast-key "V")
-
 ;; add search capability to expand-region
 (defadvice er/prepare-for-more-expansions-internal
     (around helm-ag/prepare-for-more-expansions-internal activate)
   ad-do-it
   (let ((new-msg (concat (car ad-return-value)
-                         ", / to search in project, "
-                         "f to search in files, "
-                         "b to search in opened buffers"))
+                         ", / to search in project"))
         (new-bindings (cdr ad-return-value)))
     (cl-pushnew
      '("/" (lambda ()
              (call-interactively
-              'helm-do-ag-buffers)))
+              'helm-projectile-ag)))
      new-bindings)
     (setq ad-return-value (cons new-msg new-bindings))))
 

@@ -1,6 +1,6 @@
 (prelude-require-packages '(lsp-mode helm-lsp company-lsp))
 
-(add-hook 'js2-mode-hook #'lsp-deferred)
+;; (add-hook 'js2-mode-hook #'lsp-deferred)
 
 ;;;; it's done by lsp-mode automatically due to "lsp-auto-configure t"
 ;;(push 'company-lsp company-backends)

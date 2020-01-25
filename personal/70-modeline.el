@@ -30,17 +30,8 @@
 
                 "  "
 
-                ;; mode-line-position
-                ;; the below will look like e.g. "263/947:10"
-                (10
-                   "%l"
-                   "/"
-                   (:eval (format "%d" total-lines))
-                   (:eval (propertize (format ":%d" (1+ (current-column))) 'face
-                               (if (>= (current-column) 80)
-                                   'mode-line-80col-face
-                                 'mode-line-position-face)))
-                 )
+                mode-line-position
+                "L" (:eval (format "%d" total-lines))
 
                 " "
 
@@ -56,9 +47,7 @@
 (setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
 
 (setq evil-mode-line-format nil)
-(setq line-number-mode nil) ;; custom mode-line-format is used
-(setq size-indication-mode nil) ;; custom mode-line-format is used
-(setq column-number-mode nil) ;; custom mode-line-format is used
+(setq column-number-indicator-zero-based nil)
 
 (diminish 'vi-tilde-fringe-mode)
 (diminish 'yas-minor-mode)
@@ -107,8 +96,6 @@
 (make-face 'mode-line-modified-face)
 (make-face 'mode-line-folder-face)
 (make-face 'mode-line-filename-face)
-(make-face 'mode-line-position-face)
-(make-face 'mode-line-80col-face)
 
 (set-face-attribute 'mode-line-read-only-face nil
                     :inherit 'mode-line-face
@@ -125,10 +112,3 @@
                     :inherit 'mode-line-face
                     :foreground "#00638a"
                     :weight 'bold)
-
-(set-face-attribute 'mode-line-position-face nil
-                    :inherit 'mode-line-face)
-
-(set-face-attribute 'mode-line-80col-face nil
-                    :inherit 'mode-line-position-face
-                    :foreground "black" :background "#eab700")

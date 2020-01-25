@@ -1,4 +1,4 @@
-(prelude-require-packages '(yasnippet iedit evil-iedit-state
+(prelude-require-packages '(use-package yasnippet iedit evil-iedit-state
                                       highlight-thing evil-matchit
                                       eacl lorem-ipsum tinypng dumb-jump
                                       0x0 reveal-in-folder charmap))
@@ -42,14 +42,6 @@
 (require 'eacl)
 
 (setq
-  ;; https://github.com/syohex/emacs-helm-ag#customize
-  ;; Use .agignore file at project root if this variable is non nil.
-  ;; You can also use .ignore file at project root.
-  helm-ag-use-agignore t
-
-  ;; Default: "ag --nocolor --nogroup". --follow: Follow symlinks.
-  helm-ag-base-command "ag --nocolor --nogroup --follow"
-
   web-mode-attr-indent-offset nil ;; indent by first attr
   web-mode-markup-indent-offset 2
   web-mode-css-indent-offset 2
